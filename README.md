@@ -1,1 +1,1 @@
-### Python-Intro Course for foss.ntua
+### Python-Intro for foss.ntua
