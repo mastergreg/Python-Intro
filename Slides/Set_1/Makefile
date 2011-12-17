@@ -1,4 +1,6 @@
 TARGET=Set_1.pdf
 all: ${TARGET}
 %.pdf: %.tex
-	xelatex $<
+	xelatex -shell-escape $<
+clean:
+	rm ${TARGET}

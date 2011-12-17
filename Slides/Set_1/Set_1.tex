@@ -1,4 +1,5 @@
 \documentclass{beamer}
+\usepackage{minted}
 \usetheme{Dresden}
 \author[nemo,mastergreg]{Greg (mastergreg) ~Liras and John (nemo)
 ~Giannelos}
@@ -8,24 +9,48 @@
 
 \date{\today}
 
+
 \begin{document}
-\frame{\titlepage}
-\section[Intro]{}
-\frame{\tableofcontents}
+\AtBeginSection[]
+{
+\begin{frame}
+	\frametitle{Outline}
+	\tableofcontents[currentsection]
+\end{frame}
+}
+%--- the titlepage frame -------------------------%
+\begin{frame}
+	\titlepage
+\end{frame}
+
+
 \section{Introduction to Python}
-\subsection{Introduction}
+
+\subsection{What is Python?}
+\begin{frame}
+	\frametitle{What is Python?}
+\begin{quote}
+Python is an easy to learn, powerful programming language. It has efficient
+high-level data structures and a simple but effective approach to
+object-oriented programming. Python’s elegant syntax and dynamic typing,
+together with its interpreted nature, make it an ideal language for scripting
+and rapid application development in many areas on most platforms.
+\end{quote}
+\end{frame}
+
+\subsection{Freatures}
 \begin{frame}
 	\frametitle{Python Tutorial}
 
-Python in a few words
+In a few words, Python,
 \begin{itemize}
-\item<1-> It is is \emph{Scripting Language}
-\item<2-> It is \emph{Strongly Typed}
-\item<3-> It is \emph{Dynamic}
-\item<4-> It is \emph{Portable}
-\item<5-> It is \emph{Object Oriented}
-\item<6-> It has \emph{Vast Libraries}
-\item<7-> It is \emph{Simple and non-obtrucive}
+\item<1-> is is \emph{Scripting Language}
+\item<2-> is \emph{Strongly Typed}
+\item<3-> is \emph{Dynamic}
+\item<4-> is \emph{Portable}
+\item<5-> is \emph{Object Oriented}
+\item<6-> has \emph{Vast Libraries}
+\item<7-> is \emph{Simple and non-obtrucive}
 \end{itemize}
 
 \end{frame}
@@ -36,7 +61,7 @@ Python in a few words
 	\begin{itemize}
 	\item<1-> It is easy to remember
 	\item<2-> You can develop rapidly
-	\item<2-> Interface with C libraries
+	\item<3-> Interface with C libraries
 	\end{itemize}
 \end{frame}
 \subsection{Dos and Don'ts}
@@ -44,12 +69,131 @@ Python in a few words
 	\frametitle{Must and Must Not}
 
 \begin{itemize}
-\item<1-> Must search first
-\item<2-> Must not code longer than needed
-\item<3-> Must mport only what you need
-\item<4-> Must run pychecker on your code
+\item<1-> Search first code less
+\item<2-> Import only what you need
+\item<3-> Run pychecker on your code
 \end{itemize}
 
 \end{frame}
+
+\section{Python Standard Types}
+\subsection{Arithmetic}
+
+\begin{frame}
+\frametitle{Numeric types}
+\begin{itemize}
+\item<1-> int (up to $10^{308}$!!!!) 
+\item<2-> float (53 bits precision)
+\item<3-> compex ($1+2j$)
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Operators}
+\begin{itemize}
+\item<1-> + (add)
+\item<2-> - (subtract)
+\item<3-> * (multiply)
+\item<4-> / (divide)
+\item<5-> \% (modulo)
+\item<6-> =	(assign)
+\end{itemize}
+\end{frame}
+
+\subsection{Strings}
+\begin{frame}[fragile]
+\frametitle{Strings}
+\begin{itemize}
+\item<1-> Strings are not lists! Strings are immutable!
+\item<2-> Simple concatenation: 
+\begin{minted}[fontsize=\scriptsize]{python}
+>>> 'Hello' + 'World'
+'HelloWorld'
+\end{minted}
+\item<3-> Slicing:
+\begin{itemize}
+\item<4->\begin{minted}[fontsize=\scriptsize]{python}
+>>> 'HelloWorld'[0]
+'H'
+\end{minted}
+\item<5->\begin{minted}[fontsize=\scriptsize]{python}
+>>> 'HelloWorld'[6:]
+'orld'
+\end{minted}
+\end{itemize}
+\item<6-> Unicode Strings:
+\begin{minted}[fontsize=\scriptsize]{python}
+>>> ur'Hello\u0020World !'
+u'Hello World !'
+\end{minted}
+\end{itemize}
+\end{frame}
+
+\subsection{Data Structures}
+\begin{frame}[fragile]
+\frametitle{Lists}
+\begin{itemize}
+
+\item<1-> \begin{minted}[fontsize=\scriptsize]{python}
+>>> a = ['spam', 'eggs', 100, 1234]
+>>> a
+['spam', 'eggs', 100, 1234]
+\end{minted}
+
+\item<2-> Negative indices:
+\begin{minted}[fontsize=\scriptsize]{python}
+>>> a[-2]
+100
+\end{minted}
+
+\item<3-> Concatenation:
+\begin{minted}[fontsize=\scriptsize]{python}
+>>> a[:2] + ['bacon', 2*2]
+['spam', 'eggs', 'bacon', 4]
+\end{minted}
+
+\item<4-> Comprehension:
+\begin{minted}[fontsize=\scriptsize]{python}
+for i in a:
+    print i
+\end{minted}
+
+\end{itemize}
+\end{frame}
+\begin{frame}
+\frametitle{Tuples}
+\begin{itemize}
+\item<1-> Immutable (just as strings)
+\item<2-> Indexed
+\item<3-> Nested
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Sets}
+\begin{quote}
+A set is an unordered collection with no duplicate elements. 
+\end{quote}
+\begin{itemize}
+\item<2-> \begin{minted}[fontsize=\scriptsize]{python}
+>>> basket = ['apple', 'orange', 'apple', 'pear', 'orange', 'banana']
+>>> set(basket)
+set(['orange', 'pear', 'apple', 'banana'])
+\end{minted}
+\item<3-> Operators: 
+\begin{itemize}
+\item<4-> a - b (in a but not in b)
+\item<5-> a $\vert$ b (in a or in b)
+\item<6-> a \& b (in a and in b)
+\item<7-> a \textasciicircum  b (in a or b but not in both)
+\end{itemize}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Dictionaries}
+\end{frame}
+
 
 \end{document}
