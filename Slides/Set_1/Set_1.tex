@@ -44,7 +44,7 @@ and rapid application development in many areas on most platforms.
 
 In a few words, Python,
 \begin{itemize}
-\item<1-> is is \emph{Scripting Language}
+\item<1-> is \emph{Scripting Language}
 \item<2-> is \emph{Strongly Typed}
 \item<3-> is \emph{Dynamic}
 \item<4-> is \emph{Portable}
@@ -84,7 +84,7 @@ In a few words, Python,
 \begin{itemize}
 \item<1-> int (up to $10^{308}$!!!!) 
 \item<2-> float (53 bits precision)
-\item<3-> compex ($1+2j$)
+\item<3-> complex ($1+2j$)
 \end{itemize}
 \end{frame}
 
@@ -130,6 +130,7 @@ u'Hello World !'
 \end{frame}
 
 \subsection{Data Structures}
+
 \begin{frame}[fragile]
 \frametitle{Lists}
 \begin{itemize}
@@ -188,11 +189,22 @@ set(['orange', 'pear', 'apple', 'banana'])
 \item<7-> a \textasciicircum  b (in a or b but not in both)
 \end{itemize}
 \end{itemize}
-
 \end{frame}
 
-\begin{frame}
+\begin{frame}[fragile]
 \frametitle{Dictionaries}
+Maps of objects
+\begin{itemize}
+\item<2-> Easy to create \begin{minted}[fontsize=\scriptsize]{python}
+>>> dict([('sape', 4139), ('guido', 4127), ('jack', 4098)])
+{'sape': 4139, 'jack': 4098, 'guido': 4127}
+\end{minted}
+\item<3-> Simple to use \begin{minted}[fontsize=\scriptsize]{python}
+>>> tel = dict([('sape', 4139), ('guido', 4127), ('jack', 4098)])
+>>> tel['jack']
+4098
+\end{minted}
+\end{itemize}
 \end{frame}
 
 
