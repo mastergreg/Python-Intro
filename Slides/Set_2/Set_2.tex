@@ -1,9 +1,9 @@
 \documentclass{beamer}
 \usepackage{minted}
 \usetheme{Dresden}
-\author[nemo,mastergreg]{Greg (mastergreg) Liras, John (nemo) Giannelos}
-\institute{foss.ntua}
-\title{Django Tutorial}
+\author[nemo/mastergreg]{Greg (mastergreg) Liras, John (nemo) Giannelos}
+\institute{FOSS NTUA}
+\title{Django Basics}
 \subtitle{Part II}
 
 \date{\today}
@@ -54,21 +54,15 @@ A web application framework is a software framework that is designed to support 
 
 \begin{frame}
 \begin{itemize}[<+->]
-  \item At first, WWW was only a bunch of hardcoded \textsc{html} pages.
+  \item At first, WWW was only a bunch of hardcoded HTML pages.
   \item Need for more and more dynamic content and user interaction.
   \item New languages designed specifically for web use.
   \item Common tasks-practices showed up in web development.
 \end{itemize}
-\end{frame}
 
-\begin{frame}
-\begin{itemize}
-  \item At first, WWW was only a bunch of hardcoded \textsc{html} pages.
-  \item Need for more and more dynamic content and user interaction.
-  \item New languages designed specifically for web use.
-  \item Common tasks-practices showed up in web development.
-\end{itemize}
-As a result, complete software-stacks appeared to support the web development process. Think of it is a collection of libraries that do common tasks in web development and are designed to work together.
+\uncover<5->{
+As a result, complete software-stacks appeared to support the web development process. Think of it as a collection of libraries that do common tasks in web development and are designed to work together.
+}
 \end{frame}
 
 \begin{frame}
@@ -97,8 +91,8 @@ As mentioned before, in the Django framework things are a little bit different.
 \begin{frame}
   \frametitle{Django's MVC}
 \begin{itemize}[<+->]
-  \item Model: Pretty much the same as MVC. Describes our database using ORM.
-  \item Template: Seperates our website content from its presentation ``style''.
+  \item Model: Pretty much the same as MVC. Describes our database using ORM (object relation mapper).
+  \item Template: Seperates our website content from its presentation ``style''. To achieve this we use a templating language embedded in our HTML.
   \item View: Describes which data should be presented (decided using appropriate functions) and sends them to our template. It also takes care of the url handling.
     \begin{itemize}
       \item According to Django's FAQ page: \begin{quote}...a “view” is the Python callback function for a particular URL, because that callback function describes which data is presented. \end{quote}
@@ -112,7 +106,7 @@ Django has a built-in website for various (common) administrative jobs. It allow
 \begin{itemize}
   \item To manage site users
   \item To change form display and handling
-  \item To make various validations (add,remove,publish e.g ``articles'')
+  \item To make various validations (add,remove,publish \textit{e.g ``articles''})
 \end{itemize}
 \end{frame}
 
