@@ -8,18 +8,17 @@
 
 \date{\today}
 
-
 \begin{document}
 \AtBeginSection[]
 {
-\begin{frame}
-	\frametitle{Outline}
-	\tableofcontents[currentsection]
-\end{frame}
+    \begin{frame}
+        \frametitle{Outline}
+        \tableofcontents[currentsection]
+    \end{frame}
 }
 %--- the titlepage frame -------------------------%
 \begin{frame}
-	\titlepage
+    \titlepage
 \end{frame}
 
 
@@ -27,186 +26,241 @@
 
 \subsection{What is Python?}
 \begin{frame}
-	\frametitle{What is Python?}
-\begin{quote}
-Python is an easy to learn, powerful programming language. It has efficient
-high-level data structures and a simple but effective approach to
-object-oriented programming. Python’s elegant syntax and dynamic typing,
-together with its interpreted nature, make it an ideal language for scripting
-and rapid application development in many areas on most platforms.
-\end{quote}
+    \frametitle{What is Python?}
+    \begin{quote}
+        Python is an easy to learn, powerful programming language. It has efficient
+        high-level data structures and a simple but effective approach to
+        object-oriented programming. Python’s elegant syntax and dynamic typing,
+        together with its interpreted nature, make it an ideal language for scripting
+        and rapid application development in many areas on most platforms.
+    \end{quote}
 \end{frame}
 
-\subsection{Freatures}
+\subsection{Freatures of Python}
 \begin{frame}
-	\frametitle{Python Tutorial}
+    \frametitle{Features (some of them)}
 
-In a few words, Python,
-\begin{itemize}
-\item<1-> is \emph{Scripting Language}
-\item<2-> is \emph{Strongly Typed}
-\item<3-> is \emph{Dynamic}
-\item<4-> is \emph{Interpreted}
-\item<5-> is \emph{Portable}
-\item<6-> is \emph{Object Oriented}
-\item<7-> has \emph{Vast Libraries (batteries included)}
-\item<8-> is \emph{Simple and non-obtrucive}
-\end{itemize}
+    In a few words, Python,
+    \begin{itemize}
+        \item<1-> is \emph{Scripting Language}
+        \item<2-> is \emph{Strongly Typed}
+        \item<3-> is \emph{Dynamic}
+        \item<4-> is \emph{Interpreted}
+        \item<5-> is \emph{Portable}
+        \item<6-> is \emph{Object Oriented}
+        \item<7-> has \emph{Vast Libraries (batteries included)}
+        \item<8-> is \emph{Simple and non-obtrucive}
+    \end{itemize}
 
 \end{frame}
 
 \subsection{Why Python?}
 \begin{frame}
-	\frametitle{Why?}
-	\begin{itemize}
-	\item<1-> It is easy to remember
-	\item<2-> You can develop rapidly
-	\item<3-> Readable Code (whitespace is semantically important!)
-	\item<4-> Interface with C libraries
-	\end{itemize}
+    \frametitle{Why?}
+    \begin{itemize}
+        \item<1-> It is easy to remember
+        \item<2-> You can develop rapidly
+        \item<3-> Readable Code (whitespace is semantically important!)
+        \item<4-> Interface with C libraries
+    \end{itemize}
 \end{frame}
 \subsection{Dos and Don'ts}
-\begin{frame}
-	\frametitle{Must and Must Not}
 
-\begin{itemize}
-\item<1-> Search first code less
-\item<2-> Import only what you need
-\item<3-> Run pychecker on your code
-\end{itemize}
+\begin{frame}[fragile]
+    \frametitle{Bad Practices}
+
+    \begin{itemize}
+        \item<1-> Inventing the wheel
+        \item<2-> One-liners - Obfuscated coding
+        \item<3-> Having code on top level
+        \item<4-> Huge imports
+            \begin{minted}[fontsize=\scriptsize]{python}
+>>> from foo import *
+            \end{minted}
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Good Practices}
+
+    \begin{itemize}
+        \item<1-> Search first code less
+        \item<2-> Use env to locate your interpreter
+        \item<3-> Import only what you need
+        \item<4-> Run pychecker on your code
+        \item<5-> 
+            \begin{minted}[fontsize=\scriptsize]{python} 
+if __name__ == "__main__":
+    main()
+            \end{minted}
+    \end{itemize}
 
 \end{frame}
 
 \section{Python Standard Types}
 \subsection{Arithmetic}
 
+%{{{ Numeric types
 \begin{frame}
-\frametitle{Numeric types}
-\begin{itemize}
-\item<1-> int (up to $10^{308}$!!!!) 
-\item<2-> float (53 bits precision)
-\item<3-> complex ($1+2j$)
-\end{itemize}
+    \frametitle{Numeric types}
+    \begin{itemize}
+        \item<1-> int ( limitless :-D )
+        \item<2-> float (53 bits precision)
+        \item<3-> complex ($1+2j$)
+    \end{itemize}
 \end{frame}
+%}}}
 
+%{{{ Operators
 \begin{frame}
-\frametitle{Operators}
-\begin{itemize}
-\item<1-> + (add)
-\item<2-> - (subtract)
-\item<3-> * (multiply)
-\item<4-> / (divide)
-\item<5-> \% (modulo)
-\item<6-> =	(assign)
-\end{itemize}
+    \frametitle{Operators}
+    \begin{itemize}
+        \item<1-> + (add)
+        \item<2-> - (subtract)
+        \item<3-> * (multiply)
+        \item<4-> / (divide)
+        \item<5-> \% (modulo)
+        \item<6-> =	(assign)
+    \end{itemize}
 \end{frame}
+%}}}
 
+
+%{{{ Strings
 \subsection{Strings}
 \begin{frame}[fragile]
-\frametitle{Strings}
-\begin{itemize}
-\item<1-> Strings are not lists! Strings are immutable!
-\item<2-> Simple concatenation: 
-\begin{minted}[fontsize=\scriptsize]{python}
+    \frametitle{Strings}
+    \begin{itemize}
+        \item<1-> Strings are not lists! Strings are immutable!
+        \item<2-> Simple concatenation: 
+            \begin{minted}[fontsize=\scriptsize]{python}
 >>> 'Hello' + 'World'
 'HelloWorld'
-\end{minted}
-\item<3-> Slicing:
-\begin{itemize}
-\item<4->\begin{minted}[fontsize=\scriptsize]{python}
+            \end{minted}
+        \item<3-> Slicing:
+            \begin{itemize}
+                \item<4->\begin{minted}[fontsize=\scriptsize]{python}
 >>> 'HelloWorld'[0]
 'H'
-\end{minted}
-\item<5->\begin{minted}[fontsize=\scriptsize]{python}
+                    \end{minted}
+
+                \item<5->\begin{minted}[fontsize=\scriptsize]{python}
 >>> 'HelloWorld'[6:]
 'orld'
-\end{minted}
-\end{itemize}
-\item<6-> Unicode Strings:
-\begin{minted}[fontsize=\scriptsize]{python}
+                    \end{minted}
+
+            \end{itemize}
+        \item<6-> Unicode Strings:
+
+            \begin{minted}[fontsize=\scriptsize]{python}
 >>> ur'Hello\u0020World !'
 u'Hello World !'
-\end{minted}
-\end{itemize}
+            \end{minted}
+
+    \end{itemize}
 \end{frame}
+%}}}
 
 \subsection{Data Structures}
 
+%{{{ Lists
 \begin{frame}[fragile]
-\frametitle{Lists}
-\begin{itemize}
+    \frametitle{Lists}
+    \begin{itemize}
 
-\item<1-> \begin{minted}[fontsize=\scriptsize]{python}
+        \item<1-> \begin{minted}[fontsize=\scriptsize]{python}
 >>> a = ['spam', 'eggs', 100, 1234]
 >>> a
 ['spam', 'eggs', 100, 1234]
-\end{minted}
+            \end{minted}
 
-\item<2-> Negative indices:
-\begin{minted}[fontsize=\scriptsize]{python}
+        \item<2-> Negative indices:
+            \begin{minted}[fontsize=\scriptsize]{python}
 >>> a[-2]
 100
-\end{minted}
+            \end{minted}
 
-\item<3-> Concatenation:
-\begin{minted}[fontsize=\scriptsize]{python}
+        \item<3-> Concatenation:
+            \begin{minted}[fontsize=\scriptsize]{python}
 >>> a[:2] + ['bacon', 2*2]
 ['spam', 'eggs', 'bacon', 4]
-\end{minted}
+            \end{minted}
 
-\item<4-> Comprehension:
-\begin{minted}[fontsize=\scriptsize]{python}
+        \item<4-> Comprehension:
+            \begin{minted}[fontsize=\scriptsize]{python}
 for i in a:
     print i
-\end{minted}
+            \end{minted}
 
-\end{itemize}
+    \end{itemize}
 \end{frame}
+%}}}
+
+%{{{ Tuples
 \begin{frame}
-\frametitle{Tuples}
-\begin{itemize}
-\item<1-> Immutable (just as strings)
-\item<2-> Indexed
-\item<3-> Nested
-\end{itemize}
+    \frametitle{Tuples}
+    \begin{itemize}
+        \item<1-> Immutable (just as strings)
+        \item<2-> Indexed
+        \item<3-> Nested
+    \end{itemize}
 \end{frame}
+%}}}
 
+%{{{ Sets
 \begin{frame}[fragile]
-\frametitle{Sets}
-\begin{quote}
-A set is an unordered collection with no duplicate elements. 
-\end{quote}
-\begin{itemize}
-\item<2-> \begin{minted}[fontsize=\scriptsize]{python}
+    \frametitle{Sets}
+    \begin{quote}
+        A set is an unordered collection with no duplicate elements. 
+    \end{quote}
+    \begin{itemize}
+        \item<2-> \begin{minted}[fontsize=\scriptsize]{python}
 >>> basket = ['apple', 'orange', 'apple', 'pear', 'orange', 'banana']
 >>> set(basket)
 set(['orange', 'pear', 'apple', 'banana'])
-\end{minted}
-\item<3-> Operators: 
-\begin{itemize}
-\item<4-> a - b (in a but not in b)
-\item<5-> a $\vert$ b (in a or in b)
-\item<6-> a \& b (in a and in b)
-\item<7-> a \textasciicircum  b (in a or b but not in both)
-\end{itemize}
-\end{itemize}
+            \end{minted}
+        \item<3-> Operators: 
+            \begin{itemize}
+                \item<4-> a - b (in a but not in b)
+                \item<5-> a $\vert$ b (in a or in b)
+                \item<6-> a \& b (in a and in b)
+                \item<7-> a \textasciicircum  b (in a or b but not in both)
+            \end{itemize}
+    \end{itemize}
 \end{frame}
+%}}}
 
+%{{{ Dictionaries
 \begin{frame}[fragile]
-\frametitle{Dictionaries}
-Maps of objects
-\begin{itemize}
-\item<2-> Easy to create \begin{minted}[fontsize=\scriptsize]{python}
+    \frametitle{Dictionaries}
+    Maps of objects
+    \begin{itemize}
+        \item<2-> Easy to create \begin{minted}[fontsize=\scriptsize]{python}
 >>> dict([('sape', 4139), ('guido', 4127), ('jack', 4098)])
 {'sape': 4139, 'jack': 4098, 'guido': 4127}
-\end{minted}
-\item<3-> Simple to use \begin{minted}[fontsize=\scriptsize]{python}
+            \end{minted}
+        \item<3-> Simple to use \begin{minted}[fontsize=\scriptsize]{python}
 >>> tel = dict([('sape', 4139), ('guido', 4127), ('jack', 4098)])
 >>> tel['jack']
 4098
-\end{minted}
-\end{itemize}
+            \end{minted}
+    \end{itemize}
+\end{frame}
+%}}}
+
+\subsection{Epilogue}
+\begin{frame}
+    \frametitle{Questions??}
+    Ask! :)
 \end{frame}
 
+\begin{frame}[fragile]
+    \frametitle{Thanks}
+    \begin{itemize}
+        \item Thanks for watching
+        \item Thanks to foss-ntua for hosting
+    \end{itemize}
+\end{frame}
 
 \end{document}
