@@ -8,6 +8,7 @@
 
 \date{\today}
 
+
 \begin{document}
 \AtBeginSection[]
 {
@@ -98,6 +99,27 @@ if __name__ == "__main__":
 
 \end{frame}
 
+%{{{ Variables and dynamic typing
+\subsection{Variables and dynamic typing}
+\begin{frame}[fragile]
+    \frametitle{Types}
+    \begin{itemize}
+        \item<1-> x is just a name
+            \begin{minted}[fontsize=\scriptsize]{python}
+>>> x = 1
+>>> x = 'hello world'
+            \end{minted}
+        \item<2-> don't mix
+            \begin{minted}[fontsize=\scriptsize]{python}
+>>> 'a'+1
+TypeError: cannot concatenate 'str' and 'int' objects
+>>> 'a'*3
+'aaa'
+            \end{minted}
+    \end{itemize}
+\end{frame}
+%}}}
+
 \section{Python Standard Types}
 \subsection{Arithmetic}
 
@@ -125,7 +147,6 @@ if __name__ == "__main__":
     \end{itemize}
 \end{frame}
 %}}}
-
 
 %{{{ Strings
 \subsection{Strings}
@@ -236,14 +257,48 @@ set(['orange', 'pear', 'apple', 'banana'])
     \frametitle{Dictionaries}
     Maps of objects
     \begin{itemize}
-        \item<2-> Easy to create \begin{minted}[fontsize=\scriptsize]{python}
+        \item<2-> Easy to create 
+            \begin{minted}[fontsize=\scriptsize]{python}
 >>> dict([('sape', 4139), ('guido', 4127), ('jack', 4098)])
 {'sape': 4139, 'jack': 4098, 'guido': 4127}
             \end{minted}
-        \item<3-> Simple to use \begin{minted}[fontsize=\scriptsize]{python}
+        \item<3-> Simple to use 
+            \begin{minted}[fontsize=\scriptsize]{python}
 >>> tel = dict([('sape', 4139), ('guido', 4127), ('jack', 4098)])
 >>> tel['jack']
 4098
+            \end{minted}
+    \end{itemize}
+\end{frame}
+%}}}
+
+%{{{ Functions
+\subsection{Functions}
+\begin{frame}[fragile]
+    \frametitle{To or not to return}
+    \begin{itemize}
+        \item<1-> No return value ('None')
+            \begin{minted}[fontsize=\scriptsize]{python}
+>>> def hi(s):
+        print "hello",s
+            \end{minted}
+        \item<2-> int or string return balue
+            \begin{minted}[fontsize=\scriptsize]{python}
+>>> def add(a,b):
+        if type(a)==int:
+            return a+b
+        else:
+            return "not int"
+>>> add(1,2)
+3
+>>> add('a',1)
+'not int'
+            \end{minted}
+        \item<3-> lambdas
+            \begin{minted}[fontsize=\scriptsize]{python}
+>>> add = lambda x,y : x+y
+>>> add(1,2)
+3
             \end{minted}
     \end{itemize}
 \end{frame}
