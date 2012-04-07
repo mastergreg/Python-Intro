@@ -1,9 +1,9 @@
 \documentclass{beamer}
 \usepackage{minted}
 \usetheme{Dresden}
-\author[nemo,mastergreg]{Greg (mastergreg) Liras, John (nemo) Giannelos}
-\institute{foss.ntua}
-\title{Django Tutorial}
+\author[nemo/mastergreg]{Greg (mastergreg) Liras, John (nemo) Giannelos}
+\institute{FOSS NTUA}
+\title{Django Basics}
 \subtitle{Part II}
 
 \date{\today}
@@ -54,21 +54,15 @@ A web application framework is a software framework that is designed to support 
 
 \begin{frame}
 \begin{itemize}[<+->]
-  \item At first, WWW was only a bunch of hardcoded \textsc{html} pages.
+  \item At first, WWW was only a bunch of hardcoded HTML pages.
   \item Need for more and more dynamic content and user interaction.
   \item New languages designed specifically for web use.
   \item Common tasks-practices showed up in web development.
 \end{itemize}
-\end{frame}
 
-\begin{frame}
-\begin{itemize}
-  \item At first, WWW was only a bunch of hardcoded \textsc{html} pages.
-  \item Need for more and more dynamic content and user interaction.
-  \item New languages designed specifically for web use.
-  \item Common tasks-practices showed up in web development.
-\end{itemize}
-As a result, complete software-stacks appeared to support the web development process. Think of it is a collection of libraries that do common tasks in web development and are designed to work together.
+\uncover<5->{
+As a result, complete software-stacks appeared to support the web development process. Think of it as a collection of libraries that do common tasks in web development and are designed to work together.
+}
 \end{frame}
 
 \begin{frame}
@@ -97,8 +91,8 @@ As mentioned before, in the Django framework things are a little bit different.
 \begin{frame}
   \frametitle{Django's MVC}
 \begin{itemize}[<+->]
-  \item Model: Pretty much the same as MVC. Describes our database using ORM.
-  \item Template: Seperates our website content from its presentation ``style''.
+  \item Model: Pretty much the same as MVC. Describes our database using ORM (object relation mapper).
+  \item Template: Seperates our website content from its presentation ``style''. To achieve this we use a templating language embedded in our HTML.
   \item View: Describes which data should be presented (decided using appropriate functions) and sends them to our template. It also takes care of the url handling.
     \begin{itemize}
       \item According to Django's FAQ page: \begin{quote}...a “view” is the Python callback function for a particular URL, because that callback function describes which data is presented. \end{quote}
@@ -112,8 +106,107 @@ Django has a built-in website for various (common) administrative jobs. It allow
 \begin{itemize}
   \item To manage site users
   \item To change form display and handling
-  \item To make various validations (add,remove,publish e.g ``articles'')
+  \item To make various validations (add,remove,publish \textit{e.g ``articles''})
 \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Django snippets}
+\underline{Object Relational Mapper example:}
+
+	\begin{minted}[fontsize=\scriptsize]{python}
+
+from django.db import models
+
+class Publisher(models.Model):
+    name = models.CharField(maxlength=30)
+    address = models.CharField(maxlength=50)
+    city = models.CharField(maxlength=60)
+    state_province = models.CharField(maxlength=30)
+    country = models.CharField(maxlength=50)
+    website = models.URLField()
+
+	\end{minted}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Django snippets}
+\underline{URL dispatcher example:}
+
+	\begin{minted}[fontsize=\scriptsize]{python}
+
+from django.conf.urls import patterns, url, include
+
+urlpatterns = patterns
+    ('',
+    (r'^articles/2003/$', 'news.views.special_case_2003'),
+    (r'^articles/(\d{4})/$', 'news.views.year_archive'),
+    (r'^articles/(\d{4})/(\d{2})/$', 'news.views.month_archive'),
+    (r'^articles/(\d{4})/(\d{2})/(\d+)/$', 'news.views.article_detail'),)
+
+	\end{minted}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Django snippets}
+\underline{Simple views example:}
+
+	\begin{minted}[fontsize=\scriptsize]{python}
+
+from django.http import HttpResponse
+import datetime
+
+def current_datetime(request):
+    now = datetime.datetime.now()
+    html = "<html><body>It is now %s.</body></html>" % now
+    return HttpResponse(html)
+
+def hours_ahead(request, x):
+    x = int(offset)
+    dt = datetime.datetime.now() + datetime.timedelta(hours=x)
+    html ="<html><body>In %s hour(s), it will be %s.</body></html>" % (x, dt)
+    return HttpResponse(html)
+
+	\end{minted}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Django snippets}
+\underline{HTML templates example:}
+
+	\begin{minted}[fontsize=\scriptsize]{python}
+<html>
+<head><title>Ordering notice</title></head>
+  <body>
+    <p>Dear {{ person_name }},</p>
+    <p>Here are the items you have ordered:</p>
+    <ul>
+      {% for item in item_list %}
+      <li>{{ item }}</li>
+      {% endfor %}
+    </ul>
+    {% if ordered_warranty %}
+    <p>Your warranty information will be included in the packaging.</p>
+    {% endif %}
+  </body>
+</html>
+	\end{minted}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{References}
+
+  \begin{itemize}
+    \item Django Documentation: \url{https://docs.djangoproject.com/}
+    \item The Django Book: \url{http://www.djangobook.com/}
+    \item Django community (IRC,mailing lists): \url{https://www.djangoproject.com/community/}
+    \item Python Package Index: \url{http://pypi.python.org/}
+  \end{itemize}
+
 \end{frame}
 
 \end{document}
